@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+    <title><?php echo _lang('云鼎国际')?></title>
+    
+    <!-- Luxury Theme -->
+    <link href="<?php echo CSS_PATH?>luxury.css?v=<?php echo time(); ?>" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <script type="text/javascript" src="<?php echo JS_PATH?>jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="<?php echo JS_PATH?>layer/layer.min.js"></script>
+    <script type="text/javascript" src="<?php echo JS_PATH?>global.js"></script>
+    <script type="text/javascript" src="<?php echo JS_PATH?>common.js"></script>
+    
+    <script type="text/javascript">
+		var WEB_PATH = '<?php echo WEB_PATH?>';
+		var INDEX_PATH = '<?php echo INDEX_PATH?>';
+		var JS_PATH = '<?php echo JS_PATH?>';
+		var CSS_PATH = '<?php echo CSS_PATH?>';
+		var IMG_PATH = '<?php echo IMG_PATH?>';
+		var USERNAME_TYPE = '<?php echo $this->setting['username_type']?>';
+	</script>
+
+    <style>
+        body {
+            background-color: #050505;
+            background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #000000 100%);
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px 0;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 40px 30px;
+            background: rgba(26, 26, 26, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid #d4af37;
+            padding: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .login-title {
+            font-size: 22px;
+            color: #d4af37;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            transition: all 0.3s ease;
+        }
+
+        .input-wrapper:focus-within {
+            border-color: #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+            background: #1a1a1a;
+        }
+
+        .input-icon {
+            color: #666;
+            width: 24px;
+            text-align: center;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .input-wrapper:focus-within .input-icon {
+            color: #d4af37;
+        }
+
+        .form-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #fff;
+            height: 100%;
+            padding-left: 10px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-input::placeholder {
+            color: #555;
+        }
+        
+        .field-tip {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+            padding-left: 5px;
+        }
+
+        .code-wrapper {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .code-img-box {
+            width: 100px;
+            height: 46px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            cursor: pointer;
+        }
+        
+        .code-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .agreement-box {
+            font-size: 12px;
+            color: #888;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .agreement-box input {
+            margin-right: 5px;
+        }
+        
+        .agreement-box a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .btn-submit {
+            width: 100%;
+            height: 46px;
+            background: linear-gradient(135deg, #d4af37 0%, #aa8a28 100%);
+            color: #000;
+            font-weight: bold;
+            border: none;
+            border-radius: 23px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-submit:active {
+            transform: scale(0.98);
+            box-shadow: 0 2px 5px rgba(212, 175, 55, 0.2);
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            font-size: 13px;
+        }
+
+        .link-item {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .link-item:hover, .link-item.highlight {
+            color: #d4af37;
+        }
+        
+        /* Validform Styles */
+        .Validform_checktip { margin-left: 5px; font-size: 12px; color: #ff4757; display: none; }
+        .Validform_wrong { color: #ff4757; }
+        .Validform_right { display: none; }
+
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <header class="login-header">
+            <img class="login-logo" src="/images/shop.png" alt="Logo" />
+            <div class="login-title"><?php echo _lang('云鼎国际')?></div>
+        </header>
+
+        <form action="?a=register" method="post" id="reg_form">
+            <input type="hidden" name="dosubmit" id="dosubmit" value="yes">
+            
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" class="form-input" name="username" id="username" placeholder="<?php echo _lang("输入账号")?>" autocomplete="off">
+                </div>
+                <div class="field-tip"><?php echo _lang("请输入6~20位字母、数字或组合")?></div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" class="form-input" name="password" id="password" placeholder="<?php echo _lang("输入密码")?>">
+                </div>
+                <div class="field-tip"><?php echo _lang("请输入6~16位的字母、数字组合")?></div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <i class="fas fa-id-card input-icon"></i>
+                    <input type="text" class="form-input" name="name" id="name" placeholder="<?php echo _lang("真实姓名（提款使用不可修改）")?>">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <i class="fas fa-users input-icon"></i>
+                    <input type="text" class="form-input" name="agent" id="agent" value="<?= empty($_GET['agent'])?'':$_GET['agent'] ?>" placeholder="<?php echo _lang("请填写您的代理人邀请码")?>">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="code-wrapper">
+                    <div class="input-wrapper" style="flex:1;">
+                        <i class="fas fa-shield-alt input-icon"></i>
+                        <input type="text" class="form-input" name="code" id="code" placeholder="<?php echo _lang("验证码")?>">
+                    </div>
+                    <div class="code-img-box">
+                        <?php echo form::checkcode('code_img', '4', '14', 84, 34, '' , '', '#FFFFFF', true)?>
+                    </div>
+                </div>
+                <div class="field-tip"><?php echo _lang("请输入4位的字母、数字的验证码")?></div>
+            </div>
+            
+            <div class="agreement-box">
+                <label style="display:flex; align-items:center; cursor:pointer;">
+                    <input type="checkbox" checked disabled style="accent-color: #d4af37;">
+                    <span><?php echo _lang("我已年满18周岁且同意接受")?> <a href="#/RegisterText"><?php echo _lang("注册条款")?></a></span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submit"><?php echo _lang('立即注册')?></button>
+
+            <div class="links">
+                <a href="?a=login" class="link-item highlight"><?php echo _lang("已有账号？立即登录")?></a>
+            </div>
+        </form>
+    </div>
+
+    <!-- CS Float -->
+    <div id="indexbtn" onclick="window.open('https://cys.ydwlrbercsm.top/index/index/kefu?u=6980ad63e3447')" style="position:fixed; bottom:30px; right:20px; width:50px; height:50px; background:linear-gradient(135deg, #d4af37, #aa8a28); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 5px 15px rgba(212,175,55,0.4); z-index:999; cursor:pointer;">
+        <i class="fas fa-comment-dots" style="color:#000; font-size:24px;"></i>
+    </div>
+
+    <script type="text/javascript" src="<?php echo JS_PATH?>Validform_v5.3.2.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        var Vform = $("#reg_form").Validform({
+            tiptype: function(msg, o, cssctl) {
+                if (o.type == 3) {
+                    layer.msg(msg, {icon: 5, time: 2000});
+                }
+            },
+            ajaxPost: true,
+            callback: function(data) {
+                if (data.status == 'y') {
+                    layer.msg('注册成功！正在跳转...', {icon: 6});
+                    setTimeout(function(){
+                        location.href = '?a=login';
+                    }, 2000);
+                } else {
+                    layer.msg(data.info, {icon: 5});
+                    $('#code_img').click(); // Refresh captcha
+                }
+            }
+        });
+
+        Vform.addRule([
+            {
+                ele: '#username',
+                datatype: USERNAME_TYPE,
+                ajaxurl: INDEX_PATH + 'a=ajax_username',
+                nullmsg: '<?php echo _lang("请输入用户名！")?>',
+                errormsg: '<?php echo _lang("用户名格式错误！")?>'
+            },
+            {
+                ele: '#password',
+                datatype: 's6-20',
+                nullmsg: '<?php echo _lang("请输入密码！")?>',
+                errormsg: '<?php echo _lang("密码长度6-20位！")?>'
+            },
+            {
+                ele: '#name',
+                datatype: 's2-5',
+                nullmsg: '<?php echo _lang("请输入真实的姓名！")?>',
+                errormsg: '<?php echo _lang("姓名应该为2-5个字！")?>'
+            }
+        ]);
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "user-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.2.0",
+    "axios": "^1.13.6",
+    "pinia": "^3.0.4",
+    "swiper": "^12.1.2",
+    "vue": "^3.4.15",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "@vitejs/plugin-vue": "^5.0.3",
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3",
+    "vite": "^5.1.0",
+    "vue-tsc": "^3.2.5"
+  }
+}

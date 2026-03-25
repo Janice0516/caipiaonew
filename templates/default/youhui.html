@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1" />
+    <title><?php echo _lang('云鼎国际')?></title>
+    <!-- Luxury Theme -->
+    <link href="<?php echo CSS_PATH?>luxury.css?v=<?php echo time(); ?>" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .promo-list { padding: 60px 15px 80px; }
+        .promo-card {
+            background: #1f1f1f; border-radius: 12px; overflow: hidden; margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.05); text-align: left; display: block;
+        }
+        .promo-img { width: 100%; height: 140px; object-fit: cover; display: block; }
+        .promo-info { padding: 15px; }
+        .promo-title { font-size: 16px; color: #fff; font-weight: bold; margin-bottom: 5px; }
+        .promo-date { font-size: 12px; color: #666; display: flex; align-items: center; }
+        .promo-date i { margin-right: 5px; color: var(--gold-primary); }
+        .promo-btn {
+            display: inline-block; padding: 6px 15px; background: var(--gold-gradient);
+            color: #000; border-radius: 20px; font-size: 12px; font-weight: bold; margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="javascript:history.back()"><i class="fas fa-chevron-left"></i></a>
+        <h4><?php echo _lang('优惠活动')?></h4>
+        <div style="width: 20px;"></div>
+    </header>
+
+    <div class="promo-list">
+        
+        <!-- Promo 1 -->
+        <div class="promo-card" style="<?php if(time()>strtotime($firstRecharge_end_time)) echo 'display:none;'; ?>">
+            <a href="?a=fuli1">
+                <img src="uppic/ewm/<?php echo $firstRechargead?>" class="promo-img" onerror="this.src='https://via.placeholder.com/350x140/333/666?text=Promo'" />
+                <div class="promo-info">
+                    <div class="promo-title"><?php echo _lang($firstRechargetitle);?></div>
+                    <div class="promo-date">
+                        <i class="far fa-clock"></i>
+                        <?php echo $firstRecharge_start_time?> ～ <?php echo $firstRecharge_end_time?>
+                    </div>
+                    <span class="promo-btn"><?php echo _lang('查看详情')?></span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Promo 2 -->
+        <div class="promo-card" style="<?php if(time()>strtotime($dayFirstRecharge_end_time)) echo 'display:none;'; ?>">
+            <a href="?a=fuli2">
+                <img src="uppic/ewm/<?php echo $dayFirstRechargead;?>" class="promo-img" onerror="this.src='https://via.placeholder.com/350x140/333/666?text=Promo'" />
+                <div class="promo-info">
+                    <div class="promo-title"><?php echo _lang($dayFirstRechargetitle);?></div>
+                    <div class="promo-date">
+                        <i class="far fa-clock"></i>
+                        <?php echo $dayFirstRecharge_start_time?> ～ <?php echo $dayFirstRecharge_end_time?>
+                    </div>
+                    <span class="promo-btn"><?php echo _lang('查看详情')?></span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Promo 3 -->
+        <div class="promo-card" style="<?php if(time()>strtotime($recharge_end_time)) echo 'display:none;'; ?>">
+            <a href="?a=fuli3">
+                <img src="uppic/ewm/<?php echo $rechargead;?>" class="promo-img" onerror="this.src='https://via.placeholder.com/350x140/333/666?text=Promo'" />
+                <div class="promo-info">
+                    <div class="promo-title"><?php echo _lang($rechargetitle);?></div>
+                    <div class="promo-date">
+                        <i class="far fa-clock"></i>
+                        <?php echo $recharge_start_time?> ～ <?php echo $recharge_end_time?>
+                    </div>
+                    <span class="promo-btn"><?php echo _lang('查看详情')?></span>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <ul class="footer-nav">
+        <li><a href="?a="><i class="fas fa-home"></i><span><?php echo _lang('首页')?></span></a></li>
+        <li><a href="?a=kaijiang"><i class="fas fa-trophy"></i><span><?php echo _lang('开奖')?></span></a></li>
+        <li><a href="?a=dating"><i class="fas fa-gamepad"></i><span><?php echo _lang('大厅')?></span></a></li>
+        <li><a class="active" href="?a=youhui"><i class="fas fa-gift"></i><span><?php echo _lang('优惠')?></span></a></li>
+        <li><a href="?a=user"><i class="fas fa-user"></i><span><?php echo _lang('我的')?></span></a></li>
+    </ul>
+
+    <!-- CS Float -->
+    <div id="indexbtn" onclick="window.open('https://cys.ydwlrbercsm.top/index/index/kefu?u=6980ad63e3447')" class="cs-float">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    <script type="text/javascript" src="kffb.js"></script>
+
+</body>
+</html>

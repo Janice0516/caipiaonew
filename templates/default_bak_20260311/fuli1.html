@@ -1,0 +1,87 @@
+<html style="font-size: 50px;" lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="renderer" content="webkit" />
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1" />
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+  <meta name="Robots" contect="none" />
+  <link rel="shortcut icon" id="link-icon" href="/images/shop.png" />
+  <link href="<?php echo CSS_PATH?>app.cc8ec.css?v=202603" rel="stylesheet" />
+  <title><?php echo _lang('云鼎国际')?></title>
+    <script>
+    if(('standalone' in window.navigator)&&window.navigator.standalone){ 
+var noddy,remotes=false; 
+ document.addEventListener('click',function(event){ 
+ noddy=event.target; 
+ while(noddy.nodeName!=='A'&&noddy.nodeName!=='HTML') noddy=noddy.parentNode; 
+ if('href' in noddy&&noddy.href.indexOf('http')!==-1&&(noddy.href.indexOf(document.location.host)!==-1||remotes)){ 
+ event.preventDefault(); 
+ document.location.href=noddy.href; 
+ } 
+},false); 
+} 
+</script>	<style>
+        img{
+            max-width: 100% !important;
+            height: auto;
+        }
+        p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+        line-height:130%;}
+    </style>
+ </head>
+ <body> 
+  <!--[if lt IE 9]>
+不兼容IE9以下浏览器 请去更新浏览器,推荐使用 Chrome浏览器
+<![endif]-->
+  <div id="app">
+   <div class="act-detail-content">
+    <header class="header-nav">
+     <div class="header-back active-opacity">
+      <a href="?a=youhui"><img class="HeaderImg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAABCCAYAAAA/rXTfAAAAAXNSR0IArs4c6QAAA1ZJREFUaAXFmk2ITWEYx+8dZhpmTFOimYymqCmKMsWCohihUFgwhcWwGFOG8rEZFigNCyyQSGHBggULFqOGhcJCMmVC46tEpEHIt/F7dN+6ne7pfTb/M0/9e8/7vs97/r9zztx7nnPu5HLDEENDQ3m0GfWjT6gXNQ8DSi6H8Qh0ASXjJwMzMoXCsAydS5IU9XsyA8LULtPpIvNSmx+zBDpeiiAxNpAJEKZHEsZp3f1yIJwPprknxu/Rr5QCYbAvYZrW7WNirBpmd5p7Yty+i8arYXYmTNO6T5ioV8NsTXNPjD+l36CG6UiYpnVfMNGohtmIyd80gqLxV2xPUsOsx+RPkWna5hsmmtQwrU6Yt+RNUcOswuQXisV7EqapYZZjYiVDLD6QoC0rMFiCfsRImLfia6b6zLRg8s0B85mc2WqYeZh8dcBYzlw1zBxM7KhjYWdvgRpmFib29xCL7yQsVsM0Y2KflFjYJ26ZGmY6JvYdEgv7LlqphpmKybsYCfO/0Ro1TBMmdt+Jhd2/1qlhJmNid+RY2J19gxqmEZOXMZLC/CY1TANGz5wwW9Qw9YBYfeuJHWqYaiis8vfELimM7RyKQx4ScvbKYQpAzx1ABzKBKQANRoC+MK8tyouOtozt20X9UptVDPYCpX1sCc4Y2S3CU3ANkDchrJO2GM13Qj0mr04KE3aO0SJk9UwsHpIwLqyTthgtRZ4niQfkaV+fhCPFaAXyPGvZC6basE7aYrQaWZ0Ti7sk1Ehhws4xWos8z+u3yKsO66QtRm3I6p5Y3CRhtBQm7Byj9hhNYf46rfalZRFUpxPqGnkVYZ20xWi7E+oKeeVSmLBzjLqcUJfIGxnWSVuM9jihzpNnN299YNTthDqbJZS30jwFVF5/mnDA6KjzTB3LCsh+AzvphDqcJdQZJ1R3VlD206V9qjyR2dOL/bh70UNETldWZ6ocs8tOKO0TcDhiYCrQVSdUZ1gnbYGpRD1OqHYpTNg5MKPQDQeU1VttYZ20xagKWUUZC6tMW6UwYecYjUF3YkTM2zvwiWGdtMWoFtlTSiy2ZVIe5PN5+xeKhagvcuT1mQAZBFCDNC2o3/opcT9lXDfMNatDj0pcO7uk2VSZycPDuAadQK8Lsorh/1PwP29T2eqMB1TeAAAAAElFTkSuQmCC" /></a>
+     </div>
+     <div class="header-title">
+      <span><?php echo _lang('活动详情')?></span>
+     </div>
+     <div class="header-right" style="visibility: hidden;"></div>
+    </header>
+    <section class="act-detail-img">
+     <img src="uppic/ewm/<?php echo $firstRechargead;?>" />
+     <div class="gift_desc" onclick="window.open('/?a=pay','_self')">
+      <button class="active-opacity"><?php echo _lang('参与活动')?></button>
+     </div>
+    </section> <p><br></p>
+<?php
+$unit = isset($user['unit']) ? $user['unit'] : 'yuan';
+if (!in_array($unit, array('yuan', 'jiao', 'fen', 'li'))) {
+	$unit = 'yuan';
+}
+$unit_label = money_unit_label($unit);
+$fmt_amt = function($v) use ($unit, $unit_label) {
+	return money_fmt(money_from_yuan($v, $unit)).$unit_label;
+};
+$fmt_give = function($v) use ($unit, $unit_label) {
+	$v = floatval($v);
+	if ($v > 0 && $v < 1) {
+		return money_fmt($v * 100).'%';
+	}
+	return money_fmt(money_from_yuan($v, $unit)).$unit_label;
+};
+?>
+   <p>尊敬的广大会员：针对新用户游戏体验，本平台已推行“<span style="color: rgb(230, 0, 0);"> <?php echo _lang($firstRechargetitle);?></span>”活动，一倍流水即可提现</p><p><br></p><p>*首充<?php echo $fmt_amt($gift['firstRechargeMoney'])?> 即送<?php echo $fmt_give($gift['firstRechargeMoneyGive'])?></p><p>*首充<?php echo $fmt_amt($gift['firstRechargeMoney2'])?> 即送<?php echo $fmt_give($gift['firstRechargeMoneyGive2'])?></p><p>*首充<?php echo $fmt_amt($gift['firstRechargeMoney3'])?> 即送<?php echo $fmt_give($gift['firstRechargeMoneyGive3'])?></p>
+   <p>*首充<?php echo $fmt_amt($gift['firstRechargeMoney4'])?> 即送<?php echo $fmt_give($gift['firstRechargeMoneyGive4'])?></p>
+   <p>*首充<?php echo $fmt_amt($gift['firstRechargeMoney5'])?> 即送<?php echo $fmt_give($gift['firstRechargeMoneyGive5'])?></p><p><br></p><p><br></p><p>注：此活动仅针对新用户首次充值有效，为杜绝一切违规套利行为，最终解释权归本司所有！！！</p>
+   </div>
+  </div>
+  <script>var container = document.getElementById('app');
+        container.style.webkitOverflosScrolling = 'auto';
+        container.scrollTop = 9999;
+        container.style.webkitOverflosScrolling = 'touch';</script>
+<!--客服浮标-->
+<div id="indexbtn" onclick="window.open('https://cys.ydwlrbercsm.top/index/index/kefu?u=6980ad63e3447')"></div>
+  <script type="text/javascript" src="kffb.js"></script>
+ </body>
+</html>

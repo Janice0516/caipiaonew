@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1" />
+    <title><?php echo _lang('云鼎国际')?></title>
+    <!-- Luxury Theme -->
+    <link href="<?php echo CSS_PATH?>luxury.css?v=<?php echo time(); ?>" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .lobby-container { display: flex; height: calc(100vh - 120px); margin-top: 50px; }
+        .sidebar { width: 80px; background: #111; padding-top: 10px; border-right: 1px solid rgba(255,255,255,0.05); }
+        .side-item {
+            padding: 15px 0; text-align: center; color: var(--text-sub); font-size: 13px;
+            border-left: 3px solid transparent; cursor: pointer;
+        }
+        .side-item.active { background: #1a1a1a; color: var(--gold-primary); border-left-color: var(--gold-primary); }
+        .lobby-content { flex: 1; padding: 15px; overflow-y: auto; }
+        
+        .lobby-game { 
+            display: flex; align-items: center; background: #1a1a1a; padding: 15px; 
+            border-radius: 10px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.2s;
+        }
+        .lobby-game:active { transform: scale(0.98); background: #222; }
+        .lobby-game img { width: 50px; height: 50px; border-radius: 8px; margin-right: 15px; border: 1px solid #333; }
+        .lobby-game h4 { font-size: 15px; color: #fff; margin-bottom: 4px; font-weight: bold; }
+        .lobby-game p { font-size: 12px; color: #666; }
+        .lobby-game .btn-play { margin-left: auto; padding: 5px 15px; border-radius: 20px; background: var(--gold-gradient); color: #000; font-size: 12px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="javascript:history.back()"><i class="fas fa-chevron-left"></i></a>
+        <h4><?php echo _lang('游戏大厅')?></h4>
+        <div style="width: 20px;"></div>
+    </header>
+
+    <div class="lobby-container">
+        <div class="sidebar">
+            <div class="side-item active"><?php echo _lang('全部')?></div>
+            <div class="side-item"><?php echo _lang('彩票')?></div>
+            <div class="side-item"><?php echo _lang('真人')?></div>
+            <div class="side-item"><?php echo _lang('电子')?></div>
+            <div class="side-item"><?php echo _lang('体育')?></div>
+        </div>
+        <div class="lobby-content">
+            <!-- Lottery Games -->
+            <div class="lobby-game" onclick="window.open('?a=game&gameid=29','_self')">
+                <img src="/statics/images/dm28.png">
+                <div><h4><?php echo _lang('丹麦28')?></h4><p><?php echo _lang('1分钟一期')?></p></div>
+                <div class="btn-play"><?php echo _lang('进入')?></div>
+            </div>
+            <div class="lobby-game" onclick="window.open('?a=game&gameid=39','_self')">
+                <img src="/statics/images/bjsc.png">
+                <div><h4><?php echo _lang('北京赛车')?></h4><p><?php echo _lang('猜冠军')?></p></div>
+                <div class="btn-play"><?php echo _lang('进入')?></div>
+            </div>
+            <div class="lobby-game" onclick="window.open('?a=game&gameid=44','_self')">
+                <img src="/statics/images/js.png">
+                <div><h4><?php echo _lang('极速快3')?></h4><p><?php echo _lang('1分钟一期')?></p></div>
+                <div class="btn-play"><?php echo _lang('进入')?></div>
+            </div>
+            
+            <!-- Placeholder for other games -->
+            <div class="lobby-game">
+                <img src="/statics/images/ag.png" onerror="this.src='https://via.placeholder.com/50'">
+                <div><h4>AG<?php echo _lang('真人视讯')?></h4><p><?php echo _lang('百家乐/龙虎')?></p></div>
+                <div class="btn-play"><?php echo _lang('进入')?></div>
+            </div>
+            <div class="lobby-game">
+                <img src="/statics/images/mg.png" onerror="this.src='https://via.placeholder.com/50'">
+                <div><h4>MG<?php echo _lang('电子')?></h4><p><?php echo _lang('经典老虎机')?></p></div>
+                <div class="btn-play"><?php echo _lang('进入')?></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <ul class="footer-nav">
+        <li><a href="?a="><i class="fas fa-home"></i><span><?php echo _lang('首页')?></span></a></li>
+        <li><a href="?a=kaijiang"><i class="fas fa-trophy"></i><span><?php echo _lang('开奖')?></span></a></li>
+        <li><a class="active" href="?a=dating"><i class="fas fa-gamepad"></i><span><?php echo _lang('大厅')?></span></a></li>
+        <li><a href="?a=youhui"><i class="fas fa-gift"></i><span><?php echo _lang('优惠')?></span></a></li>
+        <li><a href="?a=user"><i class="fas fa-user"></i><span><?php echo _lang('我的')?></span></a></li>
+    </ul>
+
+</body>
+</html>

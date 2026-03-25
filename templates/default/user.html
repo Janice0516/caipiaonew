@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1" />
+    <title><?php echo _lang('云鼎国际')?></title>
+    <!-- Luxury Theme -->
+    <link href="<?php echo CSS_PATH?>luxury.css?v=<?php echo time(); ?>" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .user-header {
+            padding: 30px 20px; background: linear-gradient(to bottom, #1a1a1a, #050505);
+            display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-top: 60px; /* Safe area */
+        }
+        .avatar { width: 70px; height: 70px; border-radius: 50%; border: 3px solid var(--gold-primary); margin-right: 15px; object-fit: cover; }
+        .user-info h2 { font-size: 20px; margin-bottom: 5px; color: #fff; font-weight: bold; }
+        .user-level { background: var(--gold-gradient); color: #000; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; }
+        
+        .user-menu { margin: 20px 15px; background: #1a1a1a; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+        .menu-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer;
+            text-decoration: none;
+        }
+        .menu-item:last-child { border-bottom: none; }
+        .menu-item:active { background: rgba(255,255,255,0.05); }
+        .menu-left { display: flex; align-items: center; color: #fff; font-size: 14px; }
+        .menu-left i { width: 30px; color: var(--gold-primary); font-size: 16px; }
+    </style>
+</head>
+<?php
+	$unit = $user && isset($user['unit']) ? $user['unit'] : 'yuan';
+	$unit_label = money_unit_label($unit);
+?>
+<body>
+
+    <!-- User Header -->
+    <div class="user-header">
+        <?php
+        if ($user['pic']) {
+            if(preg_match('/^\d*$/',$user['pic'])){
+                echo '<img class="avatar" src="statics/images/pic/'.$user['pic'].'.jpg" alt="PIC" />';
+            } else {
+                echo '<img class="avatar" src="uppic/user/'.$user['pic'].'" alt="PIC" />';
+            }
+        } else {
+            echo '<img class="avatar" src="statics/images/userpic.png" alt="PIC" />';
+        }
+        ?>
+        <div class="user-info">
+            <h2><?php echo $user['nickname'] ? $user['nickname'] : $user['username']?></h2>
+            <span class="user-level">ID: <?= $user['uid']?></span>
+            <p style="color: #888; margin-top: 5px; font-size: 12px;"><?php echo _lang('欢迎回来')?></p>
+        </div>
+        <a href="?a=qqqqqq" style="margin-left: auto;"><i class="fas fa-cog" style="font-size: 20px; color: #fff;"></i></a>
+    </div>
+
+    <!-- Balance Card (Embedded) -->
+    <div class="balance-card" style="margin-top: -20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <div style="font-size: 12px; color: #888;"><?php echo _lang('中心钱包')?></div>
+                <div class="balance-num">
+                    <?=money_fmt(money_from_yuan($user['money'], $unit)).$unit_label?>
+                </div>
+            </div>
+            <i class="fas fa-sync-alt" onclick="location.reload()" style="color: var(--gold-primary); cursor: pointer;"></i>
+        </div>
+        <div class="balance-actions" style="margin-top: 15px;">
+            <button class="btn btn-primary" onclick="location.href='?a=pay'"><?php echo _lang('充值')?></button>
+            <button class="btn btn-secondary" onclick="window.open('?a=cash','_self')"><?php echo _lang('提现')?></button>
+        </div>
+    </div>
+    
+    <!-- User Menu 1 -->
+    <div class="user-menu">
+        <a href="?a=pay_list" class="menu-item">
+            <div class="menu-left"><i class="fas fa-coins"></i> <?php echo _lang('充值记录')?></div>
+            <i class="fas fa-chevron-right" style="color:#555;"></i>
+        </a>
+        <a href="?a=cash_list" class="menu-item">
+            <div class="menu-left"><i class="fas fa-hand-holding-usd"></i> <?php echo _lang('提现记录')?></div>
+            <i class="fas fa-chevron-right" style="color:#555;"></i>
+        </a>
+        <a href="?a=user_nav" class="menu-item">
+            <div class="menu-left"><i class="fas fa-chart-bar"></i> <?php echo _lang('投注报表')?></div>
+            <i class="fas fa-chevron-right" style="color:#555;"></i>
+        </a>
+        <a href="?a=msg_list" class="menu-item">
+            <div class="menu-left"><i class="fas fa-envelope"></i> <?php echo _lang('站内信')?></div>
+            <i class="fas fa-chevron-right" style="color:#555;"></i>
+        </a>
+    </div>
+
+    <!-- User Menu 2 -->
+    <div class="user-menu">
+        <a href="?a=daili_tuiguang" class="menu-item">
+            <div class="menu-left"><i class="fas fa-share-alt"></i> <?php echo _lang('我的推广')?></div>
+            <i class="fas fa-chevron-right" style="color:#555;"></i>
+        </a>
+        <a href="?a=logout" class="menu-item">
+            <div class="menu-left"><i class="fas fa-sign-out-alt"></i> <?php echo _lang('安全退出')?></div>
+            <i class="fas fa-chevron-right" style="color:#555;"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <ul class="footer-nav">
+        <li><a href="?a="><i class="fas fa-home"></i><span><?php echo _lang('首页')?></span></a></li>
+        <li><a href="?a=kaijiang"><i class="fas fa-trophy"></i><span><?php echo _lang('开奖')?></span></a></li>
+        <li><a href="?a=dating"><i class="fas fa-gamepad"></i><span><?php echo _lang('大厅')?></span></a></li>
+        <li><a href="?a=youhui"><i class="fas fa-gift"></i><span><?php echo _lang('优惠')?></span></a></li>
+        <li><a class="active" href="?a=user"><i class="fas fa-user"></i><span><?php echo _lang('我的')?></span></a></li>
+    </ul>
+
+    <!-- CS Float -->
+    <div id="indexbtn" onclick="window.open('https://cys.ydwlrbercsm.top/index/index/kefu?u=6980ad63e3447')" class="cs-float">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    <script type="text/javascript" src="kffb.js"></script>
+
+</body>
+</html>

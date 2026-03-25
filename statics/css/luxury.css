@@ -1,0 +1,734 @@
+@charset "utf-8";
+
+/* =========================================
+   Luxury Dark/Gold Theme (v4.0)
+   Based on demo.html
+   ========================================= */
+
+:root {
+    --bg-dark: #050505;
+    --bg-card: #141414;
+    --gold-primary: #d4af37;
+    --gold-light: #f3e5ab;
+    --gold-gradient: linear-gradient(135deg, #d4af37 0%, #aa8a28 100%);
+    --glass-bg: rgba(20, 20, 20, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --text-main: #ffffff;
+    --text-sub: #888888;
+    --safe-area-bottom: env(safe-area-inset-bottom);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Global Reset Overrides */
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
+
+body {
+    background-color: var(--bg-dark) !important;
+    background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #000000 100%) !important;
+    color: var(--text-main) !important;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    padding-bottom: 80px;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+ul, li { list-style: none; padding: 0; margin: 0; }
+
+/* --- Header --- */
+.header {
+    position: fixed; top: 0; left: 0; width: 100%; height: 50px;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 15px; background: rgba(5, 5, 5, 0.95) !important; backdrop-filter: blur(20px);
+    z-index: 1000; border-bottom: 1px solid var(--glass-border) !important;
+}
+.header h4 { font-size: 18px; font-weight: 800; color: var(--gold-primary) !important; letter-spacing: 1px; margin: 0; }
+.header a { color: #fff; font-size: 20px; display: flex; align-items: center; }
+
+/* --- Banner --- */
+.banner {
+    height: 160px;
+    background: url('../images/banner_bg.jpg') center/cover; /* Placeholder */
+    position: relative;
+    margin-top: 50px;
+}
+/* Slider support */
+.slide { margin-top: 50px; border-radius: 0 !important; border: none !important; }
+.slide .bd li img { height: 160px; object-fit: cover; }
+
+/* --- Balance Card --- */
+.balance-card {
+    margin: -30px 15px 20px; background: #1a1a1a; border-radius: 16px; padding: 20px;
+    position: relative; border: 1px solid var(--glass-border); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+body.home-page .slider-pic { position: relative; z-index: 1; height: 160px; margin-top: 50px; overflow: hidden; }
+body.home-page .slider-pic .slider,
+body.home-page .slider-pic .swiper-container,
+body.home-page .slider-pic .swiper-wrapper,
+body.home-page .slider-pic .swiper-slide { height: 160px !important; }
+body.home-page .slider-pic .swiper-slide img { height: 160px !important; object-fit: cover; display: block; }
+body.home-page .balance-card { margin: 20px 15px 20px !important; z-index: 2; }
+.balance-label { font-size: 12px; color: #888; }
+.balance-num { font-size: 32px; font-weight: bold; font-family: "DIN Alternate", sans-serif; margin: 10px 0; color: #fff; }
+.balance-actions { display: flex; gap: 10px; }
+.btn {
+    flex: 1; height: 40px; line-height: 40px; text-align: center; border-radius: 10px;
+    font-size: 14px; font-weight: bold; cursor: pointer; border: none;
+}
+.btn-primary { background: var(--gold-gradient); color: #000 !important; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); }
+.btn-secondary { background: #333; color: #fff !important; border: 1px solid #555; }
+
+/* --- Notice --- */
+.notice-bar {
+    margin: 0 15px 20px; background: rgba(255, 255, 255, 0.05); border-radius: 20px;
+    height: 36px; display: flex; align-items: center; padding: 0 10px;
+    font-size: 12px; color: var(--text-sub);
+}
+.notice-icon { color: var(--gold-primary); margin-right: 8px; font-size: 16px; }
+.notice-bar marquee { flex: 1; }
+
+/* --- Quick Actions --- */
+.quick-actions { display: flex; justify-content: space-between; margin: 0 15px 20px; }
+.q-item {
+    background: #1f1f1f; width: 23%; padding: 15px 0; border-radius: 12px;
+    text-align: center; border: 1px solid var(--glass-border); display: block;
+}
+.q-item i, .q-item img { font-size: 24px; color: var(--gold-primary); margin-bottom: 5px; height: 24px; display: block; margin: 0 auto 5px; }
+.q-item div { font-size: 12px; color: var(--text-sub); }
+
+/* --- Games Grid --- */
+.section-title {
+    margin: 0 15px 15px; font-weight: bold; border-left: 3px solid var(--gold-primary);
+    padding-left: 10px; font-size: 16px; color: #fff;
+}
+
+.games-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 15px; }
+.game-card {
+    background: #1f1f1f; border-radius: 12px; padding: 20px 10px; text-align: center;
+    border: 1px solid var(--glass-border); position: relative; overflow: hidden;
+    display: block; min-height: 140px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.game-card img {
+    width: 60px; height: 60px; margin-bottom: 10px; border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 2px solid #333;
+}
+.game-card h4 { font-size: 15px; margin: 0 0 4px; color: #fff; font-weight: bold; }
+.game-card p { font-size: 11px; color: var(--gold-primary); margin: 0; opacity: 0.8; }
+
+/* --- Footer --- */
+.footer-nav {
+    position: fixed; bottom: 0; left: 0; width: 100%; height: 70px !important;
+    background: rgba(10, 10, 10, 0.95) !important; backdrop-filter: blur(20px);
+    display: flex; justify-content: space-around; align-items: center;
+    border-top: 1px solid var(--glass-border) !important; z-index: 1000;
+    padding-bottom: var(--safe-area-bottom);
+}
+.footer-nav li { flex: 1; }
+.footer-nav a {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: var(--text-sub); width: 100%; height: 100%;
+}
+.footer-nav i { font-size: 22px; margin-bottom: 4px; }
+.footer-nav span { font-size: 10px; }
+.footer-nav .active, .footer-nav a:hover { color: var(--gold-primary); }
+.footer-nav .active i { transform: scale(1.1); text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
+
+/* --- Floating CS --- */
+.cs-float {
+    position: fixed; bottom: 100px; right: 20px; width: 50px; height: 50px;
+    background: var(--gold-gradient); border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(212,175,55,0.4);
+    z-index: 900; animation: pulse 2s infinite;
+}
+.cs-float i { color: #000; font-size: 24px; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+/* --- Game Betting Interface --- */
+.game-info {
+    margin-top: 50px; padding: 15px; background: #111; display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.issue-info { font-size: 12px; color: #888; }
+.timer-box { font-family: "DIN Alternate", sans-serif; font-size: 20px; color: var(--text-main); font-weight: bold; }
+
+.bet-tabs { display: flex; background: #1a1a1a; padding: 10px 15px; overflow-x: auto; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.b-tab { padding: 6px 15px; background: #333; border-radius: 20px; font-size: 12px; white-space: nowrap; color: #aaa; transition: all 0.2s; display: block; }
+.b-tab.active { background: var(--gold-primary); color: #000; font-weight: bold; }
+
+.bet-area { padding: 0 0 120px; }
+.bet-group-title { font-size: 14px; margin-bottom: 15px; border-left: 3px solid var(--gold-primary); padding-left: 10px; color: #fff; margin-top: 20px; }
+
+.number-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+.num-btn {
+    background: #252525; border-radius: 8px; padding: 10px 5px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; border: 1px solid #333; transition: all 0.2s;
+    position: relative; overflow: hidden; cursor: pointer; min-height: 60px;
+}
+.num-val { font-size: 16px; font-weight: bold; margin-bottom: 2px; color: #eee; }
+.num-odds { font-size: 10px; color: var(--gold-primary); }
+
+.num-btn.selected {
+    background: var(--gold-gradient); border-color: var(--gold-primary);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+.num-btn.selected .num-val { color: #000; }
+.num-btn.selected .num-odds { color: #222; font-weight: bold; }
+
+/* Chips Bar */
+.chips-bar {
+    position: fixed; bottom: 60px; left: 0; width: 100%; height: 50px;
+    background: rgba(20, 20, 20, 0.95); display: flex; align-items: center; padding: 0 10px; gap: 10px;
+    overflow-x: auto; z-index: 1002; border-top: 1px solid rgba(255,255,255,0.1);
+}
+.chip {
+    width: 40px; height: 40px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #444, #111);
+    border: 2px dashed #666; display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: bold; color: #fff; flex-shrink: 0; cursor: pointer;
+}
+.chip.c10 { border-color: #2ed573; color: #2ed573; }
+.chip.c50 { border-color: #38ada9; color: #38ada9; }
+.chip.c100 { border-color: #ffa502; color: #ffa502; }
+.chip.c500 { border-color: #ff4757; color: #ff4757; }
+.chip.c1000 { border-color: var(--gold-primary); color: var(--gold-primary); }
+
+/* Game Footer */
+.game-footer {
+    position: fixed; bottom: 0; left: 0; width: 100%; height: 60px;
+    background: #1a1a1a; display: flex; align-items: center; padding: 0 10px;
+    border-top: 1px solid rgba(255,255,255,0.1); z-index: 1001;
+    padding-bottom: var(--safe-area-bottom);
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+}
+.gf-info { position: absolute; top: -30px; left: 0; width: 100%; text-align: center; background: rgba(0,0,0,0.8); padding: 5px 0; font-size: 12px; color: #ddd; opacity: 0; pointer-events: none; }
+.gf-info.show { opacity: 1; }
+
+.unit-toggle {
+    display: flex; background: #000; border: 1px solid #333; border-radius: 4px; 
+    margin-right: 10px; overflow: hidden;
+}
+.u-btn {
+    padding: 0 8px; height: 36px; line-height: 36px; font-size: 12px; color: #666;
+    cursor: pointer; border-right: 1px solid #222;
+}
+.u-btn:last-child { border-right: none; }
+.u-btn.active { background: #333; color: var(--gold-primary); font-weight: bold; }
+
+.gf-input {
+    width: 70px; height: 36px; background: #000; border: 1px solid #333; border-radius: 4px;
+    color: #fff; padding: 0 5px; font-size: 14px; text-align: center; margin-right: 5px;
+}
+.gf-btn {
+    flex: 1; height: 36px; background: var(--gold-gradient); color: #000;
+    border: none; border-radius: 4px; font-weight: bold; font-size: 14px;
+    opacity: 0.5; pointer-events: none; white-space: nowrap;
+}
+.gf-btn.active { opacity: 1; pointer-events: auto; }
+
+/* --- Restored Game Styles (Trend/Road/Balls) --- */
+.val_box {
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+    font-size: 12px;
+    background: #1a1a1a;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 10px;
+    border-radius: 8px;
+}
+.val_box span:first-child { color: var(--gold-primary); font-weight: bold; margin-right: 5px; }
+
+.val_list { display: block; line-height: 1.8; }
+
+/* Small Trend Icons */
+.val_list i, .val_box i {
+    font-style: normal;
+    margin: 0 2px;
+    background-color: #333;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 10px;
+}
+.val_list i.s1, .val_box i.s1 { color: #ff4757; background: rgba(255, 71, 87, 0.2); }
+.val_list i.s2, .val_box i.s2 { color: #ffa502; background: rgba(255, 165, 2, 0.2); }
+.val_list i.s3, .val_box i.s3 { color: #1e90ff; background: rgba(30, 144, 255, 0.2); }
+.val_list i.s4, .val_box i.s4 { color: #2ed573; background: rgba(46, 213, 115, 0.2); }
+
+/* Header Result Info (Sum/Dragon-Tiger) */
+.lottery_now #haoma_type { margin-top: 5px; }
+.lottery_now #haoma_type i {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 12px;
+    text-align: center;
+    margin: 0 3px;
+    font-style: normal;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+}
+.lottery_now #haoma_type i.s { background: transparent; color: #ccc; padding: 0; }
+.lottery_now #haoma_type i.c { color: var(--gold-primary); font-weight: bold; background: transparent; padding: 0; }
+.lottery_now #haoma_type i.z { background: var(--gold-gradient); color: #000; font-weight: bold; border-radius: 4px; }
+.lottery_now #haoma_type i.zw { background: transparent; color: #aaa; width: auto; }
+
+/* History Box (Popup) */
+.haoma_box {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0;
+    width: 100%;
+    padding: 15px;
+    background-color: #1a1a1a;
+    color: #fff;
+    z-index: 101;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.haoma_box ul li {
+    font-size: 12px;
+    line-height: 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; justify-content: space-between;
+}
+.haoma_box ul li span { color: #ccc; }
+.haoma_box ul li span i {
+    font-style: normal;
+    margin: 0 2px;
+    display: inline-block;
+    width: 20px; height: 20px; line-height: 20px;
+    text-align: center;
+    background: #333;
+    border-radius: 50%;
+    color: #fff;
+}
+.haoma_box ul li span em {
+    font-style: normal;
+    margin-left: 5px;
+    color: var(--gold-primary);
+    background: rgba(212, 175, 55, 0.1);
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+.haoma_box a.more {
+    display: block;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin: 15px auto 0;
+    background: var(--gold-gradient);
+    color: #000;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+/* Specific Game Styles */
+.games .title { position: fixed; width: 20%; max-width: 145px; border-bottom: none; margin-bottom: 0; }
+.games .title a { display: block; text-align: center; line-height: 50px; padding: 0; background: #222; color: #888; }
+.games .title a.a { background: var(--gold-primary); color: #000; font-weight: bold; }
+
+.games .line_box { float: right; overflow: hidden; width: 80%; }
+.line_box .line { display: none; }
+.line_box .line.a { display: block; }
+.line_box .line h4 { background: #333; color: #fff; line-height: 30px; font-size: 12px; text-align: center; padding: 0; }
+.line_box .line .tab { position: relative; overflow: hidden; line-height: 36px; border-top: 1px solid #333; border-left: 1px solid #333; }
+.line_box .line .tab a {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    float: left;
+    width: 33.3333%;
+    text-align: center;
+    background: #1a1a1a;
+    color: #ccc;
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+    box-sizing: border-box;
+}
+.line_box .line .tab a i { display: inline-block; float: left; width: 40px; font-style: normal; margin-bottom: 0; }
+.line_box .line .tab a em { display: inline-block; font-style: normal; color: var(--gold-primary); font-size: 10px; }
+.line_box .line .tab a.a { background: rgba(212, 175, 55, 0.2); color: var(--gold-primary); box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.1); }
+.line_box .line .tab.n2 a { width: 50%; }
+.line_box .line .tab.n2 a i { width: 80px; }
+
+/* Ball Colors for Game Board */
+.C_S0 i, .C_S13 i, .C_S14 i, .C_S27 i { background: #999 !important; color: #fff; border-radius: 50%; width: 24px; height: 24px; line-height: 24px; }
+.C_S1 i, .C_S4 i, .C_S7 i, .C_S10 i, .C_S16 i, .C_S19 i, .C_S22 i, .C_S25 i { background: #2ed573 !important; color: #fff; border-radius: 50%; width: 24px; height: 24px; line-height: 24px; }
+.C_S2 i, .C_S5 i, .C_S8 i, .C_S11 i, .C_S17 i, .C_S20 i, .C_S23 i, .C_S26 i { background: #1e90ff !important; color: #fff; border-radius: 50%; width: 24px; height: 24px; line-height: 24px; }
+.C_S3 i, .C_S6 i, .C_S9 i, .C_S12 i, .C_S15 i, .C_S18 i, .C_S21 i, .C_S24 i { background: #ff4757 !important; color: #fff; border-radius: 50%; width: 24px; height: 24px; line-height: 24px; }
+
+
+/* --- Lottery Ball Styles (Result Header) --- */
+.hm_list { display: inline-block; vertical-align: middle; margin-left: 5px; }
+.hm_list i {
+    display: inline-block;
+    width: 24px; height: 24px; line-height: 24px;
+    margin: 0 2px;
+    text-align: center;
+    font-weight: bold;
+    font-style: normal;
+    border-radius: 50%;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* PK10 / SSC Ball Colors */
+.hm_list i.c1 { background: #ffe11e; color: #333; }
+.hm_list i.c2 { background: #53b3e4; }
+.hm_list i.c3 { background: #4f5353; }
+.hm_list i.c4 { background: #f2932c; }
+.hm_list i.c5 { background: #4df4bb; color: #333; }
+.hm_list i.c6 { background: #636fd0; }
+.hm_list i.c7 { background: #bfbfbf; color: #333; }
+.hm_list i.c8 { background: #f46b71; }
+.hm_list i.c9 { background: #e51b27; }
+.hm_list i.c10 { background: #50e948; color: #333; }
+
+/* General Ball Styles */
+.hm_list i.blue {
+    background: radial-gradient(circle at 30% 30%, #4a90e2, #004a99);
+    color: #fff;
+}
+.hm_list i.orange {
+    background: radial-gradient(circle at 30% 30%, #f5a623, #d0021b);
+    color: #fff;
+}
+
+/* Result Attributes (Dragon/Tiger/Big/Small) */
+.hm_list i.dxd, .hm_list i.dss { background: #e0b356; color: #fff; border-radius: 4px; font-weight: normal; width: auto; padding: 0 4px; }
+.hm_list i.dxx, .hm_list i.dsd { background: #755542; color: #fff; border-radius: 4px; font-weight: normal; width: auto; padding: 0 4px; }
+.hm_list i.no { background: transparent; color: #ccc; box-shadow: none; width: auto; }
+
+/* --- PC28 / LHC Wave Colors --- */
+/* Red Wave */
+.line_box .line .tab.num a.hb i, .C_HB i { background: #cb0816 !important; color: #fff; }
+/* Green Wave */
+.line_box .line .tab.num a.lvb i, .C_LVB i { background: #2fcb08 !important; color: #fff; }
+/* Blue Wave */
+.line_box .line .tab.num a.lb i, .C_LB i { background: #0856cb !important; color: #fff; }
+
+/* Small Game Icons (Dragon/Tiger) */
+.line_box .line .tab a i.m { width: 20px; display: inline-block; font-style: normal; }
+
+
+/* --- Chat Box Modernization --- */
+.chat_box {
+    padding: 10px;
+    background: transparent;
+    height: 300px;
+    overflow-y: auto;
+}
+.chat_box ul li {
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 50px; /* Space for avatar */
+    min-height: 40px;
+}
+.chat_box ul li img {
+    position: absolute;
+    left: 0; top: 0;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--gold-primary);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+.chat_box ul li h4 {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 4px;
+}
+.chat_box ul li h5 {
+    display: none; /* Hide timestamp or move it */
+}
+.chat_box ul li .msg {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 0 12px 12px 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: inline-block;
+    position: relative;
+    font-size: 13px;
+    width: fit-content;
+    max-width: 140px;
+    word-break: break-all;
+}
+.chat_box ul li .msg:before {
+    content: '';
+    position: absolute;
+    left: -6px; top: 0;
+    width: 0; height: 0;
+    border-top: 6px solid #1a1a1a;
+    border-left: 6px solid transparent;
+}
+/* Chat Bet Content */
+.chat_box .msg span { display: block; }
+.chat_box .msg .qishu { color: var(--gold-primary); font-size: 12px; margin-bottom: 2px; }
+.chat_box .msg .money { color: #ff4757; font-weight: bold; }
+.chat_box .msg .wanfa { color: #ccc; }
+
+/* System Messages */
+.chat_box ul li.system {
+    padding-left: 0;
+    text-align: center;
+}
+.chat_box ul li.system h5 {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    color: #aaa;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+.chat_box ul li.system i { margin-right: 5px; }
+
+/* --- Timer Fixes --- */
+#time {
+    display: flex; align-items: center; justify-content: center;
+    background: #1a1a1a;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid #333;
+}
+#time i.fa-clock { color: var(--gold-primary); margin-right: 5px; }
+#time_clock { color: #fff; font-family: monospace; font-size: 14px; margin-right: 5px; }
+#time_status { color: #ff4757; font-size: 12px; font-style: normal; }
+
+/* --- Lottery Record Page (haoma.html) Optimization --- */
+.haoma .header { background: var(--bg-dark) !important; border-bottom: 1px solid #333 !important; }
+.haoma .table .hd { background: #1a1a1a; border-radius: 8px; padding: 10px; border: 1px solid #333; }
+.haoma .sethaoma a {
+    color: #888; background: #111; padding: 5px 15px; border-radius: 20px; font-size: 12px; margin-right: 5px;
+}
+.haoma .sethaoma a.a { background: var(--gold-primary); color: #000; font-weight: bold; }
+.haoma .list ul {
+    background: #1a1a1a; margin-bottom: 10px; border-radius: 8px; padding: 10px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+.haoma .list ul li { border-bottom: none; color: #ccc; padding: 2px 0; }
+.haoma .list ul li.qishu { color: var(--gold-primary); font-weight: bold; border-bottom: 1px solid #333; padding-bottom: 5px; margin-bottom: 5px; }
+.haoma .list ul li.time { float: right; color: #666; font-size: 12px; }
+.haoma .list ul li.hm_list { text-align: left; }
+.haoma .list ul li.line { background: #222; padding: 5px; border-radius: 4px; margin-top: 5px; display: flex; justify-content: space-around; }
+
+/* Pagination */
+#pages a { background: #1a1a1a; border: 1px solid #333; color: #fff; }
+#pages a.a { background: var(--gold-primary); color: #000; border-color: var(--gold-primary); }
+
+
+/* --- Haoma Page Specific --- */
+body.haoma-page .header {
+    background: #050505 !important;
+    border-bottom: 1px solid #333 !important;
+}
+body.haoma-page .header h4 {
+    color: var(--gold-primary) !important;
+}
+body.haoma-page .header a i {
+    color: #fff !important;
+}
+body.haoma-page .list ul {
+    background: #1a1a1a !important;
+    border: 1px solid rgba(255,255,255,0.05);
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+body.haoma-page .list ul li {
+    border: none !important;
+    color: #ccc;
+    text-align: left;
+    padding: 2px 0;
+}
+body.haoma-page .list ul li.qishu {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--gold-primary);
+    border-bottom: 1px solid #333 !important;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    width: 100% !important;
+}
+body.haoma-page .list ul li.time {
+    float: right;
+    font-size: 12px;
+    color: #666;
+    margin-top: -25px; /* Pull up to same line as qishu */
+    width: auto !important;
+}
+body.haoma-page .list ul li.hm_list {
+    margin-top: 5px;
+    text-align: left;
+    width: 100% !important;
+}
+body.haoma-page .list ul li.line {
+    background: #222;
+    padding: 5px;
+    border-radius: 4px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    width: 100% !important;
+    font-size: 12px;
+}
+body.haoma-page .list ul li.line span {
+    color: #aaa;
+}
+body.haoma-page .list ul li.line span.he {
+    color: #fff;
+    font-weight: bold;
+}
+body.haoma-page .list ul li.line span.dxd, 
+body.haoma-page .list ul li.line span.dss,
+body.haoma-page .list ul li.line span.dxx,
+body.haoma-page .list ul li.line span.dsd {
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 11px;
+}
+body.haoma-page .list ul li.line span.dxd, 
+body.haoma-page .list ul li.line span.dss { background: #e0b356; }
+body.haoma-page .list ul li.line span.dxx, 
+body.haoma-page .list ul li.line span.dsd { background: #755542; }
+
+/* Date Picker in Haoma Page */
+#daytime {
+    background: #111;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+
+/* --- Force Timer Alignment --- */
+#time_clock {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+}
+#time_status {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    margin-left: 5px;
+}
+.lottery_next {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- Push Road (Val Box) Optimization --- */
+.val_box {
+    display: none; /* Hidden by default, shown by JS */
+    background: #1a1a1a;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+.val_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    max-height: 100px;
+    overflow-y: auto;
+}
+.val_list i {
+    width: 20px; height: 20px; line-height: 20px;
+    font-size: 12px;
+    border-radius: 4px;
+    margin: 0;
+}
+
+/* --- Refactored Header Layout --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+.header-left, .header-right {
+    flex: 0 0 60px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.header-right {
+    justify-content: flex-end;
+    gap: 15px;
+}
+.header-center {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-center h4 {
+    margin: 0;
+    padding: 0;
+    line-height: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.header a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #fff;
+}
+.header a i {
+    font-size: 20px;
+}
+/* Ensure icons are gold/visible */
+.header-right a i {
+    color: var(--gold-primary);
+}
+
+/* --- Global Prompt Theme --- */
+.layui-layer {
+    background-color: #151515 !important;
+    border: 1px solid rgba(212,175,55,0.25) !important;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.45) !important;
+}
+.layui-layer-title {
+    background-color: #1f1f1f !important;
+    color: var(--gold-primary) !important;
+    border-bottom: 1px solid rgba(212,175,55,0.2) !important;
+}
+.layui-layer-dialog .layui-layer-content,
+.layui-layer-content {
+    color: #fff !important;
+}
+.layui-layer-btn a {
+    background: #2a2a2a !important;
+    border-color: #3a3a3a !important;
+    color: #ddd !important;
+}
+.layui-layer-btn .layui-layer-btn0 {
+    background: var(--gold-gradient) !important;
+    border-color: var(--gold-primary) !important;
+    color: #111 !important;
+}
+.layui-layer-msg {
+    background: rgba(20,20,20,0.96) !important;
+    border: 1px solid rgba(212,175,55,0.35) !important;
+}
+.layui-layer-msg .layui-layer-content {
+    color: #fff !important;
+}

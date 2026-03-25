@@ -1,0 +1,237 @@
+<?php include template("header"); ?>
+<script src="/dianjianniu.js"></script>
+<div class="main">
+	<div class="header">
+		<a class="back" href="?a=user" title="返回"><i class="iconfont icon-fanhui"></i></a>
+		<a class="home" href="?a=init" title="首页"><i class="iconfont icon-home"></i></a>
+		<h4><?php echo $headername?></h4>
+	</div>
+	<div class="scroll_box pay-page-scroll">
+	<style type="text/css">
+	.pay-page-scroll{padding:15px;}
+	.pay-card{background:#1a1a1a;border:1px solid rgba(212,175,55,.2);border-radius:14px;padding:16px;box-shadow:0 8px 22px rgba(0,0,0,.35);}
+	.pay-card .form_div ul li{margin-bottom:12px;}
+	.pay-card .inputxt{width:100%;height:44px;background:#111;border:1px solid #333;border-radius:10px;color:#fff;padding:0 12px;box-sizing:border-box;}
+	.pay-card .inputxt::placeholder{color:#777;}
+	.pay-card .title{color:#ddd;font-size:13px;display:block;line-height:1.8;}
+	.pay-card #type1{height:38px;background:#111;border:1px solid #333;border-radius:8px;color:#fff;padding:0 10px;min-width:150px;}
+	.pay-rate{margin-top:10px;padding:8px 10px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.2);border-radius:8px;color:#d4af37;text-align:center;}
+	.pay-qr{text-align:center;margin:12px 0;}
+	.pay-qr img{width:128px;height:128px;border:1px solid rgba(212,175,55,.3);border-radius:8px;background:#fff;padding:4px;}
+	.pay-qr-note{font-size:12px;color:#aaa;margin-top:6px;}
+	.pay-address{margin:14px 0;}
+	.pay-address-row{display:flex;}
+	.pay-address-row input{flex:1;height:40px;background:#111;border:1px solid #333;border-right:none;border-radius:8px 0 0 8px;color:#fff;padding:0 10px;font-family:monospace;}
+	.pay-address-row button{height:40px;background:#d4af37;color:#111;border:none;padding:0 16px;border-radius:0 8px 8px 0;cursor:pointer;font-weight:700;}
+	.pay-address-note{font-size:12px;color:#888;margin-top:6px;}
+	.pay-submit input{width:100%;height:44px;border:none;border-radius:22px;background:linear-gradient(135deg,#d4af37 0%,#f4e4a0 100%);color:#111;font-size:16px;font-weight:700;}
+	.pay-tips{margin-top:14px;background:#151515;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px;}
+	.pay-tips h4{color:#d4af37;margin-bottom:8px;}
+	.pay-tips p{color:#bbb;line-height:1.7;font-size:13px;}
+</style>
+
+<!--<div1 style='' class="zfb" onclick="payid1()"><?php echo _lang('支付宝')?></div1><div1 class="wx" onclick="payid2()"><?php echo _lang('微信')?></div1><div1 class="yhk" onclick="payid3()"><?php echo _lang('银行卡')?></div1>
+		<div class="user_box pay-card">
+			<div class="pay_ewm">
+				<?php echo $ewm_tps ?>
+				<!-- <div class="btn">
+					<?php echo $btn ?>
+				</div>
+					<div class="ewm" style="display:;" id="div1">
+					<ul>
+						<?php echo _lang('支付宝收款码') ?>
+					</ul>
+					<img src='/uppic/ewm/<?php echo $this -> setting['aliewm']?>' />
+				</div>
+				
+				
+				
+				<div class="ewm" style="display: none;" id="div2">
+					<ul>
+						<?php echo _lang('微信收款码') ?>
+					</ul>
+					<img src='/uppic/ewm/<?php echo $this -> setting['wxewm']?>' />
+				</div>
+					<div class="ewm" style="display: none;" id="div3">
+					<ul>
+						<?php echo $ewm ?>
+					</ul>
+				</div>
+				
+				
+			</div>--><br><br>
+			<form action="?a=pay" method="post" id="send_form" onsubmit="return false;">
+				<input type="hidden" name="dosubmit" id="dosubmit" value="yes" />
+				<input type='hidden' name='pay_type' id='pay_type' value='1' />
+				<div class="form_div">
+					<ul>
+						<li>
+							<input class="inputxt" type="text" id="money" name="money" value="" placeholder="<?php echo _lang('最低充值金额')?><?php echo $this -> setting['stamp'].$this -> setting['pay']?>" />
+						</li>
+						<li>
+							<span class="title"><?php echo _lang('到帐账号')?>：<?php echo $user['username']?></span>
+						</li>
+						<!-- <li>
+							<input class="inputxt" type="text" id="comment" name="comment" value="" placeholder="您可以备注一段内容给代理或管理员" />
+						</li> -->
+						<li>
+							<!--<span class="title">在线支付币种：
+			<select name="type1">
+			  <option value ="CNY">CNY</option>
+			  <option value ="MYR">MYR</option>
+			  <option value="USD">USD</option>
+			  <option value="SGD">SGD</option>
+			  <option value ="EUR">EUR</option>
+			  <option value ="AUD">AUD</option>
+			  <option value="THB">THB</option>
+			  <option value="GBP">GBP</option>
+			  <option value="HKD">HKD</option>
+			  <option value="AED">AED</option>
+			</select></span>-->
+			<?php  $setting = $this -> get_settings();?>
+			    <span class='title' >
+			 	    <?php echo _lang('支付方式')?>：
+			 	    <select name="type1" onchange="set_hv()" id='type1'>
+        			  <option value ="<?=$setting['hbname1']?>" data-lv='<?=$setting['hblv1']?>'><?=$setting['hbname1']?></option>
+        			 
+        			</select>
+        		 
+			  
+			 	 
+			 	    <div class="pay-rate">充值汇率：<span id='hv'>1:0.00</span></div>
+			 	  
+				</span>	 
+ 
+<!-- 二维码 -->
+<div class="pay-qr">
+    <img src='/uppic/ewm/<?php echo $this->setting['aliewm']?>' 
+         alt="USDT二维码" 
+         >
+    <div class="pay-qr-note">
+        <?php echo _lang('扫描二维码')?>
+    </div>
+</div>
+
+<!-- 复制地址 -->
+<div class="pay-address">
+    <div class="pay-address-row">
+        <input type="text" 
+               value="<?=htmlspecialchars($setting['hbname2'])?>" 
+               id="usdtAddressInput" 
+               readonly>
+        <button type="button"  onclick="copyAddress()">
+            复制
+        </button>
+    </div>
+    <div class="pay-address-note">
+        <?php echo _lang('点击复制按钮或选择地址手动复制')?>
+    </div>
+</div>
+
+<script>
+function copyAddress() {
+    const input = document.getElementById('usdtAddressInput');
+    input.select();
+    input.setSelectionRange(0, 99999); // 移动端兼容
+    
+    try {
+        const successful = document.execCommand('copy');
+        const button = event.currentTarget;
+        const originalText = button.textContent;
+        
+        if (successful) {
+            button.textContent = '已复制';
+            button.style.background = '#b8941f';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '#d4af37';
+            }, 2000);
+        }
+    } catch (err) {
+        alert('复制失败，请手动选择地址复制');
+    }
+}
+</script>	 
+				 	</li>
+					</ul>
+					
+				</div>
+				
+				<label style='display:none;' ><input name="Fruit" type="radio" value="1" checked="" /><font size="5px"><?php echo _lang('手动支付')?></font></label> 
+					<label style='display:none;' ><input name="Fruit" type="radio" value="2" /><font size="5px"><?php echo _lang('在线支付')?></font></label> 
+			
+                <div class="submit pay-submit"><input type="submit" id="submit" name="submit" value=" <?php echo _lang('提交')?> "></div>
+			</form>
+		</div>
+		<div class="tps pay-tips">
+			<h4><?php echo $config['remark'] ?></h4>
+			<h4><?php echo _lang('提示')?>：</h4>
+			<p>1、<?php echo _lang('请确认您的账号。最低充值金额为')?>：<?php echo $this -> setting['stamp'].$this -> setting['pay']?></p>
+			<p>2、<?php echo _lang('请按照上面提供的支付方式选择进行支付')?></p>
+			<p>3、<?php echo _lang('支付时，请备注您支付的订单号提交审核。提交成功后，请等待到帐确认')?></p>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="<?php echo JS_PATH?>Validform_v5.3.2.js"></script>
+<script type="text/javascript">
+
+function set_hv(){
+    var lv = $("#type1 option:selected").attr('data-lv');
+    $("#hv").html("1:"+lv);
+}
+
+$(function(){
+    $("#hv").html("1:"+$("#type1 option").eq(0).attr('data-lv'));
+    
+	var Vform = $("#send_form").Validform();
+	Vform.config({
+		tiptype:1,
+		ajaxPost:true,
+		callback:function(data){
+			if(data.status == 'y'){
+			
+			if(data.xuanze == '2'){
+				Vform.resetForm();//初始化表单
+				setTimeout(function(){//2秒后刷新
+					location.href = '/ddpay/pay.php?payid='+data.payid+'&money='+data.money+'&type='+data.type;
+				}, 2000);
+			}else{
+			Vform.resetForm();//初始化表单
+				setTimeout(function(){//2秒后刷新
+					location.href = '?a=pay_list';
+				}, 2000);
+			
+			}
+						
+			}
+		}
+	});
+	Vform.addRule([
+		{
+			ele:'#money',
+			datatype:'rmb2',
+			nullmsg:'<?php echo _lang('请输入金额')?>！',
+			errormsg:'<?php echo _lang('请输入正确的货币格式')?>！'
+		},
+		{
+			ele:'#comment',
+			datatype:'s1-50',
+			ignore:'ignore',
+			nullmsg:'<?php echo _lang('请输入备注内容')?>！',
+			errormsg:'<?php echo _lang('备注内容最多50字')?>！'
+		},
+	]);
+	//自动调整窗口
+	$(window).resize(function() {
+		var h = $(window).height()/1.5;
+		$('.scroll_box').css({'height':h+55});
+	}).resize();
+	//二维码切换
+	$('.btn a').click(function() {
+		$(this).addClass('a').siblings().removeClass('a');
+		$('.ewm li').eq($(this).index()).addClass('a').siblings().removeClass('a');
+	});
+});
+</script>
+<?php include template("footer"); ?>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1" />
+    <title><?php echo _lang('云鼎国际')?></title>
+    <!-- Luxury Theme -->
+    <link href="<?php echo CSS_PATH?>luxury.css?v=<?php echo time(); ?>" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .lottery-list { padding: 60px 15px 80px; }
+        .result-item {
+            background: #1a1a1a; margin-bottom: 15px; padding: 15px; border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center;
+            justify-content: space-between; cursor: pointer; transition: all 0.2s;
+        }
+        .result-item:active { transform: scale(0.98); background: #222; }
+        .res-left { display: flex; align-items: center; }
+        .res-icon { width: 50px; height: 50px; border-radius: 50%; margin-right: 15px; border: 2px solid #333; }
+        .res-info h4 { font-size: 16px; color: #fff; margin-bottom: 5px; font-weight: bold; }
+        .res-info p { font-size: 12px; color: var(--gold-primary); }
+        .res-right { color: #666; font-size: 20px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="javascript:history.back()"><i class="fas fa-chevron-left"></i></a>
+        <h4><?php echo _lang('开奖大厅')?></h4>
+        <div style="width: 20px;"></div> <!-- Placeholder -->
+    </header>
+
+    <!-- List -->
+    <div class="lottery-list">
+        
+        <div class="result-item" onclick="window.open('?a=haoma','_self')">
+            <div class="res-left">
+                <img src="/statics/images/bj28.png" class="res-icon">
+                <div class="res-info">
+                    <h4><?php echo _lang('北京28')?></h4>
+                    <p><?php echo _lang('点击查看开奖走势')?></p>
+                </div>
+            </div>
+            <div class="res-right"><i class="fas fa-chevron-right"></i></div>
+        </div>
+
+        <div class="result-item" onclick="window.open('?a=haoma&gameid=30','_self')">
+            <div class="res-left">
+                <img src="/statics/images/twbg.png" class="res-icon">
+                <div class="res-info">
+                    <h4><?php echo _lang('台湾宾果28')?></h4>
+                    <p><?php echo _lang('点击查看开奖走势')?></p>
+                </div>
+            </div>
+            <div class="res-right"><i class="fas fa-chevron-right"></i></div>
+        </div>
+
+        <div class="result-item" onclick="window.open('?a=haoma&gameid=29','_self')">
+            <div class="res-left">
+                <img src="/statics/images/dm28.png" class="res-icon">
+                <div class="res-info">
+                    <h4><?php echo _lang('丹麦28')?></h4>
+                    <p><?php echo _lang('点击查看开奖走势')?></p>
+                </div>
+            </div>
+            <div class="res-right"><i class="fas fa-chevron-right"></i></div>
+        </div>
+
+        <div class="result-item" onclick="window.open('?a=haoma&gameid=42','_self')">
+            <div class="res-left">
+                <img src="/statics/images/ft.png" class="res-icon">
+                <div class="res-info">
+                    <h4><?php echo _lang('幸运飞艇')?></h4>
+                    <p><?php echo _lang('点击查看开奖走势')?></p>
+                </div>
+            </div>
+            <div class="res-right"><i class="fas fa-chevron-right"></i></div>
+        </div>
+
+        <div class="result-item" onclick="window.open('?a=haoma&gameid=39','_self')">
+            <div class="res-left">
+                <img src="/statics/images/bjsc.png" class="res-icon">
+                <div class="res-info">
+                    <h4><?php echo _lang('北京赛车')?></h4>
+                    <p><?php echo _lang('点击查看开奖走势')?></p>
+                </div>
+            </div>
+            <div class="res-right"><i class="fas fa-chevron-right"></i></div>
+        </div>
+
+        <div class="result-item" onclick="window.open('?a=haoma&gameid=44','_self')">
+            <div class="res-left">
+                <img src="/statics/images/js.png" class="res-icon">
+                <div class="res-info">
+                    <h4><?php echo _lang('极速快3')?></h4>
+                    <p><?php echo _lang('点击查看开奖走势')?></p>
+                </div>
+            </div>
+            <div class="res-right"><i class="fas fa-chevron-right"></i></div>
+        </div>
+        
+        <div class="result-item" onclick="window.open('?a=haoma&gameid=48','_self')">
+            <div class="res-left">
+                <img src="/statics/images/xy.png" class="res-icon">
+                <div class="res-info">
+                    <h4><?php echo _lang('幸运快3')?></h4>
+                    <p><?php echo _lang('点击查看开奖走势')?></p>
+                </div>
+            </div>
+            <div class="res-right"><i class="fas fa-chevron-right"></i></div>
+        </div>
+
+        <div class="result-item" onclick="window.open('?a=haoma&gameid=53','_self')">
+            <div class="res-left">
+                <img src="/statics/images/liuhecai.png" class="res-icon">
+                <div class="res-info">
+                    <h4><?php echo _lang('六合彩')?></h4>
+                    <p><?php echo _lang('点击查看开奖走势')?></p>
+                </div>
+            </div>
+            <div class="res-right"><i class="fas fa-chevron-right"></i></div>
+        </div>
+        
+         <div class="result-item" onclick="window.open('?a=haoma&gameid=54','_self')">
+            <div class="res-left">
+                <img src="/statics/images/liuhecai.png" class="res-icon">
+                <div class="res-info">
+                    <h4><?php echo _lang('幸运六合彩')?></h4>
+                    <p><?php echo _lang('点击查看开奖走势')?></p>
+                </div>
+            </div>
+            <div class="res-right"><i class="fas fa-chevron-right"></i></div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <ul class="footer-nav">
+        <li><a href="?a="><i class="fas fa-home"></i><span><?php echo _lang('首页')?></span></a></li>
+        <li><a class="active" href="?a=kaijiang"><i class="fas fa-trophy"></i><span><?php echo _lang('开奖')?></span></a></li>
+        <li><a href="?a=dating"><i class="fas fa-gamepad"></i><span><?php echo _lang('大厅')?></span></a></li>
+        <li><a href="?a=youhui"><i class="fas fa-gift"></i><span><?php echo _lang('优惠')?></span></a></li>
+        <li><a href="?a=user"><i class="fas fa-user"></i><span><?php echo _lang('我的')?></span></a></li>
+    </ul>
+
+</body>
+</html>
